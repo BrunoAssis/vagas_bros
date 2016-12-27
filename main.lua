@@ -1,9 +1,14 @@
-SCREEN_WIDTH  = love.graphics.getWidth()
-SCREEN_HEIGHT = love.graphics.getHeight()
-
 platforms = {
-  {"floor",    SCREEN_WIDTH, 80, 0, SCREEN_HEIGHT - 80},
-  {"platform",          100, 50, 0, SCREEN_HEIGHT - 160}
+  {"floor",    800, 80, 0, 600 - 80},
+  {"platform", 300, 30, 0, 600 - 250},
+  {"platform", 300, 30, 500, 350},
+  
+  --{"platform", 300, 30, 800 - 300, 600 - 250},
+  --{"platform", 300, 30, 800 - 300, 600 - 250},
+  --{"platform", 300, 30, 800 - 300, 600 - 250},
+  
+  {"platform", 350, 30, 0, 170},
+  {"platform", 350, 30, 450, 170}
 }
 
 function love.load()
