@@ -1,3 +1,5 @@
+require "sprites.AnimatedSprite"
+
 platforms = {
   {"floor",    800, 80, 0, 600 - 80},
   {"platform", 300, 30, 0, 600 - 250},
@@ -13,9 +15,11 @@ platforms = {
 
 function love.load()
   love.window.setMode(800, 600)
+  MK_sprite = GetInstance("sprites/MKSprite.lua")
 end
 
 function love.update(dt)
+  UpdateInstance(MK_sprite, dt)
 end
 
 function love.draw()
@@ -33,5 +37,25 @@ function love.draw()
 
     love.graphics.setColor(color)
     love.graphics.rectangle("fill", p_x, p_y, p_w, p_h)
+  end
+
+  DrawInstance(MK_sprite, 300, 600-80-32)
+end
+
+function love.keypressed(key)
+  if key == 'right' then
+    MK_sprite.curr_anim = "walking"
+    MK_sprite.curr_frame = 1
+    MK_sprite.flip_h = 1
+  end
+
+  if key == 'left' then
+    MK_sprite.curr_anim = "walking"
+    MK_sprite.curr_frame = 1
+    MK_sprite.flip_h = -1
+  end
+
+  if key == 'escape' then
+    love.event.quit()
   end
 end
